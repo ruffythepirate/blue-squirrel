@@ -1,18 +1,19 @@
-name := """playing-reactjs"""
+name := """blue-squirrel"""
 
-version := "1.0-SNAPSHOT"
+version := "0.1-BETA"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb)
+lazy val root = (project in file("."))
+	.enablePlugins(PlayScala, SbtWeb)
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(jdbc, cache, ws, evolutions, specs2 % Test)
 
 libraryDependencies ++= Seq(
 	"com.typesafe.play" %% "anorm" 				% "2.4.0",
-	"org.webjars" 		%% "webjars-play" 		% "2.4.0-1",
-  	"org.webjars" 		%  "bootstrap" 			% "3.1.1-2",
-  	"org.webjars"       %  "flat-ui"            % "bcaf2de95e",
+		"org.webjars" 		%% "webjars-play" 		% "2.4.0-1",
+		"org.webjars" 		%  "bootstrap" 			% "3.1.1-2",
+  	"org.webjars"     %  "flat-ui"            % "bcaf2de95e",
   	"org.webjars" 		%  "react" 				% "0.13.3",
   	"org.webjars" 		%  "marked" 			% "0.3.2"
 )

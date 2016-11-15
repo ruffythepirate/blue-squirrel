@@ -4,14 +4,13 @@
 
 set ignorecase true;
 
-CREATE TABLE employee (
+CREATE TABLE blogposts (
   id                        BIGINT NOT NULL AUTO_INCREMENT,
-  name                      VARCHAR(255) NOT NULL,
-  address                   VARCHAR(1000) NOT NULL,
-  designation               VARCHAR(255) NOT NULL,
-  CONSTRAINT pk_employee PRIMARY KEY (id))
+  title                      VARCHAR(255) NOT NULL,
+  body                       VARCHAR(1000) NOT NULL,
+  CONSTRAINT pk_blogposts PRIMARY KEY (id))
 ;
 
 # --- !Downs
 
-drop table if exists employee;
+drop table if exists blogposts;

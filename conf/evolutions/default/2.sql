@@ -2,11 +2,9 @@
 
 # --- !Ups
 
-insert into employee (id,name,address,designation) values (1,'Anand Kumar Singh', 'Knoldus Software', 'Sr. Software Consultant');
-insert into employee (id,name,address,designation) values (2,'Supriya', 'Knoldus Software','Sr. Software Consultant');
-insert into employee (id,name,address,designation) values (3,'Jyoti', 'Knoldus Software','Software Consultant');
-insert into employee (id,name,address,designation) values (4,'Mayank', 'Knoldus Software','Sr. Software Consultant');
+insert into blogposts (id,title,body) values (1, 'Example 1', 'Text 1');
+insert into blogposts (id,title,body) values (2, 'Example 2', 'Text 2');
 
 # --- !Downs
 
-delete from employee;
+delete from blogposts;
