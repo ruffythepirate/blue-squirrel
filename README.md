@@ -22,6 +22,16 @@ This is a classic CRUD application, backed by a JDBC database. It demonstrates:
 * Execute `activator run` to execute the product
 * playing-reactjs should now be accessible at localhost:9000
 
+### Installation
+
+#### Selenium
+To run some of the unit tests, selenium is required. You are required to install the chromedriver for selenium. On a mac you can do this through 
+
+    brew install chromedriver
+
+It might be that your chromedriver isn't compatible with your chrome version. In that case you can manually find a chrome driver here: https://sites.google.com/a/chromium.org/chromedriver/.
+When you are manually downloading a chromedriver you must ensure that it is available in the path.
+
 All the screens:
 
 ### Play Evolution
