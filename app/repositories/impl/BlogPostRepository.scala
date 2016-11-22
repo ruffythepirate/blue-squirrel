@@ -2,14 +2,13 @@ package repositories.impl
 
 import anorm.SqlParser._
 import anorm.{~, _}
+import com.google.inject.Inject
 import models.{BlogPost, Page}
 import play.api.Logger
-import play.api.db.DB
-
-import play.api.Play.current
+import play.api.db.Database
 
 
-object BlogPostRepository extends repositories.BlogPostRepository {
+class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPostRepository {
 
   // -- Parsers
 
@@ -30,7 +29,7 @@ object BlogPostRepository extends repositories.BlogPostRepository {
     * Retrieve a blogPost from the id.
     */
   def findById(id: Long): Option[BlogPost] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("select * from blogPost where id = {id}").on('id -> id)
         .as(blogPost.singleOpt)
     }
@@ -48,7 +47,7 @@ object BlogPostRepository extends repositories.BlogPostRepository {
 
     val offest = pageSize * page
 
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
 
       val blogPosts = SQL(
         """
@@ -81,7 +80,7 @@ object BlogPostRepository extends repositories.BlogPostRepository {
     * @return
     */
   def findAll(): List[BlogPost] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       try {
         SQL("select * from blogPost order by name").as(blogPost *)
       } catch {
@@ -97,7 +96,7 @@ object BlogPostRepository extends repositories.BlogPostRepository {
     * @param blogPost The employee values.
     */
   def update(id: Long, blogPost: BlogPost): Int = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
           update blogPost
@@ -117,7 +116,7 @@ object BlogPostRepository extends repositories.BlogPostRepository {
     * @param blogPost The employee values.
     */
   def insert(blogPost: BlogPost): Option[Long] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
           insert into blogposts values (
@@ -136,7 +135,7 @@ object BlogPostRepository extends repositories.BlogPostRepository {
     * @param id Id of the blogPost to delete.
     */
   def delete(id: Long): Int = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("delete from blogposts where id = {id}").on('id -> id).executeUpdate()
     }
   }
