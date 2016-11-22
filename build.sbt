@@ -8,9 +8,14 @@ lazy val root = (project in file("."))
 scalaVersion := "2.11.8"
 sbtVersion := "0.13.11"
 
-libraryDependencies ++= Seq(jdbc, cache, ws, evolutions, specs2 % Test)
+libraryDependencies ++= Seq(jdbc,
+  cache,
+  ws,
+  evolutions
+)
 
 libraryDependencies ++= Seq(
+  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1",
   "com.typesafe.play" %% "anorm" % "2.4.0",
   "org.webjars" %% "webjars-play" % "2.4.0-1",
   "org.webjars" % "bootstrap" % "3.1.1-2",
