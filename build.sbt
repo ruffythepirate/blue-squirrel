@@ -16,6 +16,7 @@ libraryDependencies ++= Seq(jdbc,
 
 libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1",
+  "org.mockito" % "mockito-core" % "2.2.22",
   "com.typesafe.play" %% "anorm" % "2.4.0",
   "org.webjars" %% "webjars-play" % "2.4.0-1",
   "org.webjars" % "bootstrap" % "3.1.1-2",

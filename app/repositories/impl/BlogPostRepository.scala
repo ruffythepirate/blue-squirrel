@@ -16,9 +16,9 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     * Parse a BlogPost from a ResultSet
     */
   val blogPost = {
-    get[Long]("blogPost.id") ~
-      get[String]("blogPost.title") ~
-      get[String]("blogPost.body") map {
+    get[Long]("blogposts.id") ~
+      get[String]("blogposts.title") ~
+      get[String]("blogposts.body") map {
       case id ~ title ~ body => BlogPost(id, title, body)
     }
   }
@@ -30,7 +30,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     */
   def findById(id: Long): Option[BlogPost] = {
     db.withConnection { implicit connection =>
-      SQL("select * from blogPost where id = {id}").on('id -> id)
+      SQL("select * from blogposts where id = {id}").on('id -> id)
         .as(blogPost.singleOpt)
     }
   }
@@ -51,8 +51,8 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
 
       val blogPosts = SQL(
         """
-          select * from blogPost
-          where blogPost.title like {filter}
+          select * from blogposts
+          where blogposts.title like {filter}
           order by {orderBy} nulls last
           limit {pageSize} offset {offset}
         """).on(
@@ -63,8 +63,8 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
 
       val totalRows = SQL(
         """
-          select count(*) from blogPost
-          where blogPost.title like {filter}
+          select count(*) from blogposts
+          where blogposts.title like {filter}
         """).on(
         'filter -> filter).as(scalar[Long].single)
 
@@ -82,7 +82,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
   def findAll(): List[BlogPost] = {
     db.withConnection { implicit connection =>
       try {
-        SQL("select * from blogPost order by name").as(blogPost *)
+        SQL("select * from blogposts order by name").as(blogPost *)
       } catch {
         case ex: Exception => Logger.info("ERROR", ex); Nil
       }
@@ -99,7 +99,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     db.withConnection { implicit connection =>
       SQL(
         """
-          update blogPost
+          update blogPosts
           set name = {name}, address = {address}, designation = {designation}
           where id = {id}
         """).on(
