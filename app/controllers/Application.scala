@@ -23,9 +23,6 @@ class Application extends Controller {
   implicit val timeout = 10.seconds
   implicit val empJsonFormat = Json.format[BlogPost]
 
-  def index = Action {
-    Ok(views.html.index("Your new application is ready."))
-  }
 
   def dashboard = Action {
     Ok(views.html.dashboard("Your new application is ready."))
