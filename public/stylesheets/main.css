@@ -1,0 +1,43 @@
+
+.styles-header {
+    align-items: center;
+    background-color: rgb(61, 79, 93);
+    box-sizing: border-box;
+    display: flex;
+}
+
+.wide-styles-header {
+        bottom: 0px;
+        justify-content: center;
+        position: fixed;
+        top: 0px;
+        width: 25%;
+}
+
+.wide-styles-header-content {
+    text-align: center;
+}
+
+.styles-header h1 {
+    padding: 30px 30px;
+    margin: 0px;
+    color: white;
+    font-weight: bold;
+}
+
+.header-links {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+}
+
+.main-content-wide {
+    box-sizing: border-box;
+    margin-left: 25%;
+    padding: 48px;
+}
+
+div.main-content-wide {
+    max-width: 900px;
+}

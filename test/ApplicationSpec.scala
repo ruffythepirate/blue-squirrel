@@ -16,19 +16,19 @@ import play.api.inject._
 class ApplicationSpec extends PlaySpec with OneAppPerSuite with BeforeAndAfterAll {
 
   // This is actually not necessary. Evolutions are done automatic when One App is generated.
-//  val inMemoryDb = Databases.inMemory()
-//
-//  lazy override val app = new GuiceApplicationBuilder()
-//      .overrides(bind[Database].toInstance(inMemoryDb))
-//      .build()
-//
-//  override def beforeAll() = {
-//    Evolutions.applyEvolutions(inMemoryDb)
-//  }
-//
-//  override def afterAll() = {
-//    Evolutions.cleanupEvolutions(inMemoryDb)
-//  }
+  val inMemoryDb = Databases.inMemory()
+
+  lazy override val app = new GuiceApplicationBuilder()
+      .overrides(bind[Database].toInstance(inMemoryDb))
+      .build()
+
+  override def beforeAll() = {
+    Evolutions.applyEvolutions(inMemoryDb)
+  }
+
+  override def afterAll() = {
+    Evolutions.cleanupEvolutions(inMemoryDb)
+  }
 
   "Application" should {
 

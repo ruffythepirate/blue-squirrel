@@ -1,19 +1,9 @@
 @(blogPosts: Page[BlogPost])
 
-@main("Welcome to Play") {
-
-<div class="container">
-    <div class="demo-headline">
-        <h1 class="demo-logo">
-            <div class="logo"></div>
-            Employee Service
-            <small>Employee Service is the platform where employee can find their details.</small>
-            <a href="@routes.Application.dashboard">Dashboard</a>
-
-            @for(post <- blogPosts.items) {
-                <div>Hello @post.title</div>
-            }
-        </h1>
+@main("Johan's blog") {
+    <div>
+        @for(post <- blogPosts.items) {
+            @blogpostteaser(post)
+        }
     </div>
-</div>
 }
