@@ -7,6 +7,10 @@ GET    /                       controllers.IndexController.index
 
 GET    /dashboard              controllers.Application.dashboard
 
+# Blog Editor
+GET    /admin                   controllers.EditorController.index
+
+
 # Employees list (look at the default values for pagination parameters)
 #GET    /employees              controllers.Application.list
 
