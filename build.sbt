@@ -4,6 +4,11 @@ version := "0.1-BETA"
 
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala, SbtWeb)
+  .configs(IntegrationTest)
+
+Defaults.itSettings
+
+(sourceDirectory in IntegrationTest) := baseDirectory.value / "it"
 
 scalaVersion := "2.11.8"
 sbtVersion := "0.13.11"
@@ -13,6 +18,8 @@ libraryDependencies ++= Seq(jdbc,
   ws,
   evolutions
 )
+
+
 
 libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1",

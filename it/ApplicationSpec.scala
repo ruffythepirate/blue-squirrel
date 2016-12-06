@@ -1,11 +1,11 @@
 import org.scalatest.BeforeAndAfterAll
 import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
-import play.api.db.{Database, Databases}
 import play.api.db.evolutions.Evolutions
-import play.api.inject.guice.GuiceApplicationBuilder
-import play.api.test._
-import play.api.test.Helpers._
+import play.api.db.{Database, Databases}
 import play.api.inject._
+import play.api.inject.guice.GuiceApplicationBuilder
+import play.api.test.Helpers._
+import play.api.test._
 
 
 /**
