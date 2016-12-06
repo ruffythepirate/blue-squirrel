@@ -7,6 +7,6 @@ class EditorController @Inject() () extends Controller {
 
   def index = Action {
 
-    Ok(views.html.blogposteditor())
+    Ok(views.html.editor.blogposteditor())
   }
 }

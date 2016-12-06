@@ -1,9 +1,9 @@
 @import controls._
 @main("Blog Editor") {
-<div>
     <form>
-        @textinput("title", "Title")
+        @actionbar()
+        <div>
         @textarea("body", "Content")
+        </div>
     </form>
-</div>
 }
