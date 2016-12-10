@@ -5,7 +5,7 @@ version := "0.1-BETA"
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala, SbtWeb)
   .configs(IntegrationTest)
-  .settings(Defaults.itSettings: _*)
+//  .settings(Defaults.itSettings: _*)
 
 Defaults.itSettings
 
