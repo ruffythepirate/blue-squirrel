@@ -1,3 +1,5 @@
+import com.github.mmizutani.sbt.gulp.PlayGulpPlugin
+
 name := """blue-squirrel"""
 
 version := "0.1-BETA"
