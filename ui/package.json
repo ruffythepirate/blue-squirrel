@@ -1,0 +1,32 @@
+{
+  "name": "blue-squirrel",
+  "version": "0.0.1",
+  "description": "A blog written in vue.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Vue",
+    "Gulp"
+  ],
+  "author": "Ruffy",
+  "license": "MIT",
+  "devDependencies": {
+    "angular-mocks": "^1.5.8",
+    "browserify": "^13.1.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "jasmine": "^2.4.1",
+    "karma": "^1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-spec-reporter": "0.0.26",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "vue": "2.1.4"
+  }
+}
