@@ -2,7 +2,7 @@ package models
 
 import scala.language.postfixOps
 
-case class BlogPost(id: Long, title: String, body: String)
+case class BlogPost(id: Option[Long], title: String, body: String)
 
 /**
  * Helper for pagination.

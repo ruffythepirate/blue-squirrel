@@ -19,7 +19,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     get[Long]("blogposts.id") ~
       get[String]("blogposts.title") ~
       get[String]("blogposts.body") map {
-      case id ~ title ~ body => BlogPost(id, title, body)
+      case id ~ title ~ body => BlogPost(Some(id), title, body)
     }
   }
 
@@ -115,8 +115,8 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     *
     * @param blogPost The employee values.
     */
-  def insert(blogPost: BlogPost): Option[Long] = {
-    db.withConnection { implicit connection =>
+  def insert(blogPost: BlogPost): BlogPost = {
+    val id = db.withConnection { implicit connection =>
       SQL(
         """
           insert into blogposts values (
@@ -127,6 +127,8 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
         'address -> blogPost.body)
         .executeInsert()
     }
+
+    blogPost.copy(id = id)
   }
 
   /**
