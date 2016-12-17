@@ -9,7 +9,7 @@ var testTarget = 'build-test/'
 
 
 gulp.task('build-test', function() {
-        gulp.src('./app/**/*.js')
+        gulp.src('../app/assets/javascripts/**/*.js')
         .pipe(gulp.dest('./' + testTarget));
 })
 
