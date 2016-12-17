@@ -119,12 +119,10 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     val id = db.withConnection { implicit connection =>
       SQL(
         """
-          insert into blogposts values (
-    		{id}, {title}, {body} )
-        """).on(
+          insert into blogposts values ({id}, {title}, {body})""").on(
         'id -> Option.empty[Long],
-        'name -> blogPost.title,
-        'address -> blogPost.body)
+        'title -> blogPost.title,
+        'body -> blogPost.body)
         .executeInsert()
     }
 

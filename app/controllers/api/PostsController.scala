@@ -1,11 +1,12 @@
 package controllers.api
 
+import com.google.inject.Inject
 import models.BlogPost
 import play.api.libs.json.{JsValue, Json}
 import play.api.mvc.{Action, Controller}
 import services.BlogPostService
 
-class PostsController(blogPostService: BlogPostService) extends Controller {
+class PostsController @Inject() (blogPostService: BlogPostService) extends Controller {
 
   def post = Action {
     request =>

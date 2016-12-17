@@ -36,7 +36,7 @@ class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
     "request is valid" should {
       "return OK" in {
         val request = createPostRequest()
-        val response = cut.post.apply(request)
+        cut.post.apply(request)
 
         verify(postService).create(ANY_BLOGPOST)
       }

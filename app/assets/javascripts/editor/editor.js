@@ -7,10 +7,10 @@ new Vue({
     },
     methods: {
         save: function() {
-            this.$http.post('/api/posts', { testData: {property: 'Hello!'}}).then(function(){
+            this.$http.post('/api/posts', this.entry).then(function(){
                 console.log('success!');
             }, function(){
-               console.err('request failed!');
+               console.error('request failed!');
             })
         },
         cancel: function() {
