@@ -1,7 +1,7 @@
 package controllers.api
 
 import models.BlogPost
-import play.api.libs.json.JsValue
+import play.api.libs.json.{JsValue, Json}
 import play.api.mvc.{Action, Controller}
 import services.BlogPostService
 
@@ -13,7 +13,7 @@ class PostsController(blogPostService: BlogPostService) extends Controller {
         case blogPostJson: Some[JsValue] =>
           val blogPost = blogPostJson.get.as[BlogPost]
           val response = blogPostService.create(blogPost)
-          Ok("")
+          Ok(Json.toJson(response))
         case None =>
           BadRequest("")
       }
