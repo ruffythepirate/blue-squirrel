@@ -38,6 +38,15 @@ class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
         assert(status(response) === OK)
       }
     }
+
+    "request is invalid" should {
+      "return BAD_REQUEST" in {
+        val invalidRequest = FakeRequest()
+        val response = cut.post.apply(invalidRequest)
+
+        assert(status(response) === BAD_REQUEST)
+      }
+    }
   }
 
   def createPostRequest() = {
