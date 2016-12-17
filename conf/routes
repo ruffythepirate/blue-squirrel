@@ -10,19 +10,8 @@ GET    /dashboard              controllers.Application.dashboard
 # Blog Editor
 GET    /admin                   controllers.EditorController.index
 
-
-# Employees list (look at the default values for pagination parameters)
-#GET    /employees              controllers.Application.list
-
-# Add employee
-#POST   /employees/save         controllers.Application.save
-
-# Edit existing employee
-#GET    /employees/:id          controllers.Application.edit(id:Long)
-#POST   /employees/:id          controllers.Application.update(id:Long)
-
-# Delete a computer
-#POST   /employees/:id/delete   controllers.Application.delete(id:Long)
+# API
+POST   /api/posts              controllers.api.PostsController.post
 
 # Map static resources from the /public folder to the /assets URL path
 GET    /assets/*file           controllers.Assets.versioned(path="/public", file: Asset)
