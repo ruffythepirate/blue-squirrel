@@ -1,4 +1,30 @@
 
+
+Vue.component('markdown-editor', {
+  template: '<div class="form-group">'
+            + '<textarea :value="text" @input="update" class="form-control" id="body" name="body"> </textarea>'
+            + '<div v-html="compiledMarkdown"></div>'
+            + '</div>',
+  props: ['value'],
+  data: function() {
+    return {
+      text: ''
+    }
+  },
+  computed: {
+    compiledMarkdown: function() {
+    return this.$data.text
+//      return marked(this.input, {sanitize: true})
+    }
+  },
+  methods: {
+    update: _.debounce(function(e) {
+      this.$data.text = e.target.value
+      this.$emit('input', this.value)
+    }, 500)
+  }
+});
+
 new Vue({
     el: '#editor',
 
