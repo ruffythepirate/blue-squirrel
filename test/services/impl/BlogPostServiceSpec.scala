@@ -1,10 +1,11 @@
+package services.impl
+
 import models.BlogPost
+import org.mockito.Mockito._
 import org.scalatest.BeforeAndAfter
 import org.scalatest.mock.MockitoSugar
 import org.scalatestplus.play.PlaySpec
 import repositories.BlogPostRepository
-import services.impl.BlogPostService
-import org.mockito.Mockito._
 
 class BlogPostServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSugar{
 
