@@ -13,8 +13,7 @@ Vue.component('markdown-editor', {
   },
   computed: {
     compiledMarkdown: function() {
-    return this.$data.text
-//      return marked(this.input, {sanitize: true})
+      return marked(this.text, {sanitize: true})
     }
   },
   methods: {
