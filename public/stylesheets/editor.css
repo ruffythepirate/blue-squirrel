@@ -1,5 +1,4 @@
 .action-bar {
-    border-bottom: 1px solid #e5e5e5;
     background-color: #fff;
     display: table;
     font-size: 18px;
@@ -40,4 +39,36 @@
     border: 1px solid #fb8f3d;
     color: #fff;
     background: -webkit-gradient(linear,left top,left bottom,from(#f57b54),to(#ff7043));
+}
+
+.markdown-editor {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+    left: 0px;
+    right: 0px;
+}
+
+.markdown-editor textarea, .markdown-editor div {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding:  20px;
+}
+
+.markdown-editor textarea {
+  border: none;
+  border-right: 1px solid #ccc;
+  resize: none;
+  outline: none;
+  background-color: #f6f6f6;
+  font-size: 14px;
+  font-family: 'Monaco', courier, monospace;
+  padding: 20px;
+}
+
+code {
+  color: #f66;
 }

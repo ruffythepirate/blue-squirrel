@@ -1,8 +1,8 @@
 
 
 Vue.component('markdown-editor', {
-  template: '<div class="form-group">'
-            + '<textarea :value="text" @input="update" class="form-control" id="body" name="body"> </textarea>'
+  template: '<div class="markdown-editor">'
+            + '<textarea :value="text" @input="update" id="body" name="body"> </textarea>'
             + '<div v-html="compiledMarkdown"></div>'
             + '</div>',
   props: ['value'],
