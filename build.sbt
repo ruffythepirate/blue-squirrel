@@ -27,6 +27,7 @@ libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1",
   "org.mockito" % "mockito-core" % "2.2.22",
   "com.typesafe.play" %% "anorm" % "2.4.0",
+  "com.atlassian.commonmark" % "commonmark" % "0.2.0",
   "org.webjars" %% "webjars-play" % "2.4.0-1",
   "org.webjars" % "bootstrap" % "3.1.1-2",
   "org.webjars" % "flat-ui" % "bcaf2de95e",
