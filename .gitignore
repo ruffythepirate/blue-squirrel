@@ -26,3 +26,4 @@ target
 /RUNNING_PID
 /ui/node_modules
 /ui/build-test
+/app/assets/javascripts/lib
