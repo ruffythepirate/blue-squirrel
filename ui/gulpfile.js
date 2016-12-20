@@ -7,6 +7,19 @@ var targetFolder = '../public/'
 
 var testTarget = 'build-test/'
 
+var libTarget = '../app/assets/javascripts/lib/'
+
+var libSources = [
+  'vue/dist/vue.js',
+  'vue-resource/dist/vue-resource.js',
+  'marked/lib/marked.js',
+  'lodash/lodash.js'
+]
+
+gulp.task('copy-lib', function() {
+  gulp.src(libSources.map(name => 'node_modules/' + name))
+  .pipe(gulp.dest(libTarget))
+})
 
 gulp.task('build-test', function() {
         gulp.src('../app/assets/javascripts/**/*.js')
