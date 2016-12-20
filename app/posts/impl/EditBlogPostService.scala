@@ -1,10 +1,12 @@
-package services.impl
+package posts.impl
+
 import com.google.inject.Inject
 import models.BlogPost
 import repositories.BlogPostRepository
 
-class BlogPostService @Inject() ( repository: BlogPostRepository) extends services.BlogPostService{
+class EditBlogPostService @Inject()(repository: BlogPostRepository) extends posts.EditBlogPostService{
   override def create(post: BlogPost): BlogPost = {
     repository.insert(post)
   }
 }
+

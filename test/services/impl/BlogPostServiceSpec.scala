@@ -5,11 +5,12 @@ import org.mockito.Mockito._
 import org.scalatest.BeforeAndAfter
 import org.scalatest.mock.MockitoSugar
 import org.scalatestplus.play.PlaySpec
+import posts.impl.EditBlogPostService
 import repositories.BlogPostRepository
 
 class BlogPostServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSugar{
 
-  var cut: BlogPostService = _
+  var cut: EditBlogPostService = _
 
   var blogPostRepository: BlogPostRepository = _
 
@@ -18,7 +19,7 @@ class BlogPostServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
   before {
     blogPostRepository = mock[BlogPostRepository]
 
-    cut = new BlogPostService(blogPostRepository)
+    cut = new EditBlogPostService(blogPostRepository)
   }
 
   "BlogPostService.post" should {

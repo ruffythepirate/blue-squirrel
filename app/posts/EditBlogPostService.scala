@@ -1,8 +1,8 @@
-package services
+package posts
 
 import models.BlogPost
 
-trait BlogPostService {
+trait EditBlogPostService {
 
   def create(post: BlogPost): BlogPost
 

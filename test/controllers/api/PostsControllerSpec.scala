@@ -10,9 +10,9 @@ import org.scalatestplus.play.PlaySpec
 import play.api.libs.json.{JsObject, Json}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import services.BlogPostService
 import org.mockito.Mockito._
 import org.scalatest.tools.Durations
+import posts.EditBlogPostService
 import util.TestData
 
 import scala.concurrent.duration.{Duration, FiniteDuration}
@@ -21,12 +21,12 @@ class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
 
   var cut: PostsController = _
 
-  var postService: BlogPostService = _
+  var postService: EditBlogPostService = _
 
   before {
-    postService = mock[BlogPostService]
+    postService = mock[EditBlogPostService]
 
-    when(postService.create(ANY_BLOGPOST)).thenReturn(ANY_BLOGPOST)
+    when(postService.create(ANY_BLOGPOST_NOT_IN_DB)).thenReturn(ANY_BLOGPOST_NOT_IN_DB)
 
     cut = new PostsController(postService)
 
@@ -38,7 +38,7 @@ class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
         val request = createPostRequest()
         cut.post.apply(request)
 
-        verify(postService).create(ANY_BLOGPOST)
+        verify(postService).create(ANY_BLOGPOST_NOT_IN_DB)
       }
 
       "call BlogPostService" in {
@@ -55,7 +55,7 @@ class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
         val responseBody = contentAsJson(response)
         val resultBlogPost = responseBody.as[BlogPost]
 
-        assert(resultBlogPost === ANY_BLOGPOST)
+        assert(resultBlogPost === ANY_BLOGPOST_NOT_IN_DB)
       }
     }
 
@@ -72,8 +72,8 @@ class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
   def createPostRequest() = {
     FakeRequest().withJsonBody(
       Json.obj(
-        "title" -> ANY_BLOGPOST.title,
-        "body" -> ANY_BLOGPOST.body
+        "title" -> ANY_BLOGPOST_NOT_IN_DB.title,
+        "body" -> ANY_BLOGPOST_NOT_IN_DB.body
       )
     )
   }

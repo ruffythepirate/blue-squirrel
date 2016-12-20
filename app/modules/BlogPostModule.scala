@@ -1,9 +1,8 @@
 package modules
 
 import com.google.inject.AbstractModule
+import posts.EditBlogPostService
 import repositories._
-import services._
-import services.BlogPostService
 
 class BlogPostModule extends AbstractModule {
 
@@ -11,8 +10,8 @@ class BlogPostModule extends AbstractModule {
     bind(classOf[BlogPostRepository])
       .to(classOf[repositories.impl.BlogPostRepository])
 
-    bind(classOf[BlogPostService])
-        .to(classOf[services.impl.BlogPostService])
+    bind(classOf[EditBlogPostService])
+        .to(classOf[posts.impl.EditBlogPostService])
 
 
   }
