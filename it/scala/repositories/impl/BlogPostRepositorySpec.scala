@@ -25,7 +25,7 @@ class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with Mockit
 
   "BlogPostRepository.insert" should {
     "save a blogpost" in {
-      val result = cut.insert(ANY_BLOGPOST)
+      val result = cut.insert(ANY_BLOGPOST_NOT_IN_DB)
 
       val fromDb = cut.findById(result.id.get).get
 
@@ -33,7 +33,7 @@ class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with Mockit
     }
 
     "return a blogpost with an id" in {
-      val result = cut.insert(ANY_BLOGPOST)
+      val result = cut.insert(ANY_BLOGPOST_NOT_IN_DB)
 
       assert(result.id !== None)
     }

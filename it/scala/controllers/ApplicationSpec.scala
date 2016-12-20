@@ -1,3 +1,5 @@
+package controllers
+
 import org.scalatest.BeforeAndAfterAll
 import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
 import play.api.db.evolutions.Evolutions
@@ -28,6 +30,15 @@ class ApplicationSpec extends PlaySpec with OneAppPerSuite with BeforeAndAfterAl
 
   override def afterAll() = {
     Evolutions.cleanupEvolutions(inMemoryDb)
+  }
+
+  "BlogPostController.index"  when {
+    "blogpost exists" should {
+      "return ok" in {
+        val res = route(app, FakeRequest(GET, "/posts/1")).get
+        assert(status(res) === OK)
+      }
+    }
   }
 
   "Application" should {
