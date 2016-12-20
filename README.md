@@ -9,10 +9,9 @@ This project stores it's frontend javascript files in the ui folder. It then use
 Prerequisites to get this to work are:
 
 1. You must have npm installed.
-2. You need to install a couple of npm modules:
-
-        npm install -g yo gulp bower
-        
+2. go to the ui folder
+3. run `npm install`
+4. run `gulp copy-lib`
 
 
 #### Selenium
