@@ -5,10 +5,10 @@
 # Home page
 GET    /                       controllers.IndexController.index
 
-GET    /dashboard              controllers.Application.dashboard
+GET   /posts/:postId          controllers.BlogPostController.index(postId)
 
 # Blog Editor
-GET    /admin                   controllers.EditorController.index
+GET    /admin                   controllers.admin.EditorController.index
 
 # API
 POST   /api/posts              controllers.api.PostsController.post

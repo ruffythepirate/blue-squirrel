@@ -1,6 +1,6 @@
 @(blogPosts: Page[BlogPost])
 
-@main("Johan's blog") {
+@layout("Johan's blog") {
     <div>
         @for(post <- blogPosts.items) {
             @blogpostteaser(post)
