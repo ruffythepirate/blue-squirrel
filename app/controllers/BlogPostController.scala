@@ -13,7 +13,7 @@ class BlogPostController @Inject() (readBlogPostService: ReadBlogPostService) ex
 
     blogPostTry match {
       case Success(blogPost) =>
-        Ok("")//views.html.blogpost.index(blogPost))
+        Ok(views.html.posts.index(blogPost))
       case Failure(exception) =>
         InternalServerError("")
       case _ =>
