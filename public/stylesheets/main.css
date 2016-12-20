@@ -25,11 +25,20 @@
     font-weight: bold;
 }
 
+.blog-post {
+  color: #333;
+}
+
 .header-links {
     display: flex;
     flex: 1;
     flex-direction: column;
     text-align: center;
+}
+
+a.subtle-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .main-content-wide {

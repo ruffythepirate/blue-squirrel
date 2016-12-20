@@ -1,5 +1,7 @@
 @(post: BlogPost)
-
-<h1><a href="/posts/@{post.id.get}">@post.title</a></h1>
+<div class="blog-post">
+<h1><a class="subtle-link" href="/posts/@{post.id.get}">@post.title</a></h1>
 
 <div>@post.body</div>
+
+    </div>
