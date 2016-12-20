@@ -5,7 +5,7 @@
 # Home page
 GET    /                       controllers.IndexController.index
 
-GET   /posts/:postId          controllers.BlogPostController.index(postId)
+GET   /posts/:postId          controllers.BlogPostController.index(postId: Long)
 
 # Blog Editor
 GET    /admin                   controllers.admin.EditorController.index

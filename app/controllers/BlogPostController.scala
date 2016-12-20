@@ -1,10 +1,23 @@
 package controllers
 
+import com.google.inject.Inject
 import play.api.mvc.{Action, Controller}
+import posts.ReadBlogPostService
 
-class BlogPostController extends Controller {
+import scala.util.{Failure, Success}
 
-  def index(id: String) = Action {
-    Ok("")
+class BlogPostController @Inject() (readBlogPostService: ReadBlogPostService) extends Controller {
+
+  def index(id: Long) = Action {
+    val blogPostTry = readBlogPostService.getBlogPost(id)
+
+    blogPostTry match {
+      case Success(blogPost) =>
+        Ok("")//views.html.blogpost.index(blogPost))
+      case Failure(exception) =>
+        InternalServerError("")
+      case _ =>
+        InternalServerError("")
+    }
   }
 }
