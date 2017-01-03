@@ -27,3 +27,4 @@ target
 /ui/node_modules
 /ui/build-test
 /app/assets/javascripts/lib
+/project/coverall

@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/ruffythepirate/blue-squirrel/badge.svg?branch=master)](https://coveralls.io/github/ruffythepirate/blue-squirrel?branch=master)
+
 # Introduction
 
 This is a test project for me where I try to learn some more Scala, while at the same time developing something that can be used. It is basically a blog. At a later point it might be seperated into mini services.

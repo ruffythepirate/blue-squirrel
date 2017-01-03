@@ -1,4 +1,4 @@
-import com.github.mmizutani.sbt.gulp.PlayGulpPlugin
+import org.scoverage.coveralls.Imports.CoverallsKeys._
 
 name := """blue-squirrel"""
 
@@ -39,3 +39,10 @@ resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
 routesGenerator := InjectedRoutesGenerator
+
+coverageEnabled := true
+
+coverallsToken := {
+  val token = IO.read(new File("project/coverall/coverallToken.txt"))
+  Some(token)
+}
