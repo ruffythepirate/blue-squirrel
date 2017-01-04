@@ -4,6 +4,7 @@ import anorm.SqlParser._
 import anorm.{~, _}
 import com.google.inject.Inject
 import models.{BlogPost, Page}
+import org.joda.time.DateTime
 import play.api.Logger
 import play.api.db.Database
 
@@ -18,8 +19,9 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
   val blogPost = {
     get[Long]("blogposts.id") ~
       get[String]("blogposts.title") ~
-      get[String]("blogposts.body") map {
-      case id ~ title ~ body => BlogPost(Some(id), title, body)
+      get[String]("blogposts.body") ~
+      get[DateTime]("blogposts.updated_date") map {
+      case id ~ title ~ body ~ updatedDate => BlogPost(Some(id), title, body, Some(updatedDate))
     }
   }
 
@@ -117,16 +119,15 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     */
   def insert(blogPost: BlogPost): BlogPost = {
     val id = db.withConnection { implicit connection =>
-      SQL(
-        """
-          insert into blogposts values ({id}, {title}, {body})""").on(
+      SQL("""insert into blogposts (id, title, body) values ({id}, {title}, {body})""")
+        .on(
         'id -> Option.empty[Long],
         'title -> blogPost.title,
-        'body -> blogPost.body)
+        'body -> blogPost.body )
         .executeInsert()
     }
-
-    blogPost.copy(id = id)
+    findById(id.get).get
+//    blogPost.copy(id = id)
   }
 
   /**

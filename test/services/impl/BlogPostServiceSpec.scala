@@ -7,14 +7,13 @@ import org.scalatest.mock.MockitoSugar
 import org.scalatestplus.play.PlaySpec
 import posts.impl.EditBlogPostService
 import repositories.BlogPostRepository
+import util.TestData
 
-class BlogPostServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSugar{
+class BlogPostServiceSpec extends PlaySpec with BeforeAndAfter with TestData with MockitoSugar{
 
   var cut: EditBlogPostService = _
 
   var blogPostRepository: BlogPostRepository = _
-
-  val ANY_BLOGPOST = BlogPost(None, "title", "body")
 
   before {
     blogPostRepository = mock[BlogPostRepository]
@@ -26,9 +25,9 @@ class BlogPostServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
 
     "call Repository.create with input" in {
 
-      cut.create(ANY_BLOGPOST)
+      cut.create(ANY_BLOGPOST_NOT_IN_DB)
 
-      verify(blogPostRepository).insert(ANY_BLOGPOST)
+      verify(blogPostRepository).insert(ANY_BLOGPOST_NOT_IN_DB)
     }
   }
 

@@ -29,6 +29,7 @@ class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with Mockit
 
       val fromDb = cut.findById(result.id.get).get
 
+
       assert(fromDb === result)
     }
 
