@@ -20,8 +20,9 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     get[Long]("blogposts.id") ~
       get[String]("blogposts.title") ~
       get[String]("blogposts.body") ~
-      get[DateTime]("blogposts.updated_date") map {
-      case id ~ title ~ body ~ updatedDate => BlogPost(Some(id), title, body, Some(updatedDate))
+      get[DateTime]("blogposts.updated_date") ~
+      get[DateTime]("blogposts.created_date") map {
+      case id ~ title ~ body ~ updatedDate ~ createdDate => BlogPost(Some(id), title, body, Some(updatedDate), Some(createdDate))
     }
   }
 
@@ -126,8 +127,8 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
         'body -> blogPost.body )
         .executeInsert()
     }
+
     findById(id.get).get
-//    blogPost.copy(id = id)
   }
 
   /**

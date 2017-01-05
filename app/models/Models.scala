@@ -5,7 +5,7 @@ import play.api.libs.json.Json
 
 import scala.language.postfixOps
 
-case class BlogPost(id: Option[Long], title: String, body: String, updatedDate: Option[DateTime])
+case class BlogPost(id: Option[Long], title: String, body: String, updatedDate: Option[DateTime], createdDate: Option[DateTime])
 
 object BlogPost {
   implicit val blogPostFormat = Json.format[BlogPost]
