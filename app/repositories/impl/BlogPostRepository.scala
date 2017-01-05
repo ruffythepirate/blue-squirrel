@@ -103,7 +103,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
       SQL(
         """
           update blogPosts
-          set name = {name}, address = {address}, designation = {designation}
+          set title = {title}, body = {body}, updated_date = NOW()
           where id = {id}
         """).on(
         'id -> id,
@@ -120,7 +120,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     */
   def insert(blogPost: BlogPost): BlogPost = {
     val id = db.withConnection { implicit connection =>
-      SQL("""insert into blogposts (id, title, body) values ({id}, {title}, {body})""")
+      SQL("""insert into blogposts (id, title, body, updated_date, created_date) values ({id}, {title}, {body}, NOW(), NOW())""")
         .on(
         'id -> Option.empty[Long],
         'title -> blogPost.title,
