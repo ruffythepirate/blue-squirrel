@@ -40,8 +40,6 @@ resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 // other, legacy style, accesses its actions statically.
 routesGenerator := InjectedRoutesGenerator
 
-coverageEnabled := true
-
 coverallsToken := {
   val token = IO.read(new File("project/coverall/coverallToken.txt"))
   Some(token)

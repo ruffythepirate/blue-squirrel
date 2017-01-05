@@ -18,8 +18,11 @@ Vue.component('markdown-editor', {
   },
   methods: {
     update: _.debounce(function(e) {
-      this.$data.text = e.target.value
-      this.$emit('input', this.value)
+      this.$data.text = e.target.value;
+      this.$emit('input', this.value);
+
+      fetch('/api')
+
     }, 500)
   }
 });

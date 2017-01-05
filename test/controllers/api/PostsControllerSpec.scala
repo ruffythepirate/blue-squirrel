@@ -1,21 +1,15 @@
 package controllers.api
 
-import java.util.concurrent.TimeUnit
-
-import akka.util.Timeout
 import models.BlogPost
+import org.mockito.Mockito._
+import org.scalatest.BeforeAndAfter
 import org.scalatest.mock.MockitoSugar
-import org.scalatest.{BeforeAndAfter, FunSuite}
 import org.scalatestplus.play.PlaySpec
-import play.api.libs.json.{JsObject, Json}
+import play.api.libs.json.Json
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import org.mockito.Mockito._
-import org.scalatest.tools.Durations
 import posts.EditBlogPostService
 import util.TestData
-
-import scala.concurrent.duration.{Duration, FiniteDuration}
 
 class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar with TestData {
 
@@ -34,7 +28,7 @@ class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
 
   "PostsController.post" when {
     "request is valid" should {
-      "return OK" in {
+      "Calls postService with blogpost" in {
         val request = createPostRequest()
         cut.post.apply(request)
 
