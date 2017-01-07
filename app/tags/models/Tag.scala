@@ -1,5 +1,5 @@
 package tags.models
 
-class Tag {
+import org.joda.time.DateTime
 
-}
+case class Tag (id: Long, name: String, createdDate: DateTime)

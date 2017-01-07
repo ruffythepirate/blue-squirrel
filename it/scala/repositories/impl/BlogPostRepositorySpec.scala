@@ -15,12 +15,11 @@ class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with Mockit
 
   override def beforeAll() = {
     Evolutions.applyEvolutions(inMemoryDb)
-
     cut = new BlogPostRepository(inMemoryDb)
   }
 
   override def afterAll() = {
-    Evolutions.cleanupEvolutions(inMemoryDb)
+//    Evolutions.cleanupEvolutions(inMemoryDb)
   }
 
   "BlogPostRepository.update" should {
