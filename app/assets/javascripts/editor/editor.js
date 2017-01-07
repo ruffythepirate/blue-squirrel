@@ -8,24 +8,40 @@ Vue.component('markdown-editor', {
   props: ['value'],
   data: function() {
     return {
-      text: ''
+      text: '',
+      compiledMarkdown: ''
     }
   },
   computed: {
-    compiledMarkdown: function() {
-      return marked(this.text, {sanitize: true})
-    }
+//    compiledMarkdown: function() {
+//      return marked(this.text, {sanitize: true})
+//    }
   },
   methods: {
     update: _.debounce(function(e) {
-      this.$data.text = e.target.value;
-      this.$emit('input', this.value);
 
-      fetch('/api')
+     this.$data.text = e.target.value;
+     this.$emit('input', this.value);
 
-    }, 500)
+    updateMarkdown(this, e.target.value);
+
+    }, 700)
   }
 });
+
+function updateMarkdown(self, newText) {
+
+      if(newText === self.lastSentText) return;
+      self.lastSentText = newText;
+      var urlEncodedText = encodeURIComponent(newText);
+
+      fetch('/api/post/parseMarkdown?markdown=' + urlEncodedText)
+        .then(function(response) {
+          return response.text();
+        }). then(function(data) {
+          self.$data.compiledMarkdown = data;
+        });
+}
 
 new Vue({
     el: '#editor',
