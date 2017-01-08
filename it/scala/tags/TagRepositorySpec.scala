@@ -6,7 +6,7 @@ import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
 import play.api.db.Database
 import util.{DbMigrations, ItTestData}
 
-class TagRepositorySpec extends PlaySpec with OneAppPerSuite with BeforeAndAfterAll with MockitoSugar with ItTestData {
+class TagRepositorySpec extends PlaySpec with BeforeAndAfterAll with MockitoSugar with ItTestData {
 
   var cut: TagRepository = _
 
