@@ -6,16 +6,15 @@ import org.scalatestplus.play.PlaySpec
 import play.api.db.Databases
 import play.api.db.evolutions.Evolutions
 import repositories.impl.BlogPostRepository
-import util.ItTestData
+import util.{DbMigrations, ItTestData}
 
 class TagRepositorySpec extends PlaySpec with BeforeAndAfterAll with MockitoSugar with ItTestData {
 
   var cut: TagRepository = _
 
-  val inMemoryDb = Databases.inMemory()
+  val inMemoryDb = DbMigrations.getMigratedDb()
 
   override def beforeAll() = {
-    Evolutions.applyEvolutions(inMemoryDb)
     cut = new TagRepository(inMemoryDb)
   }
 

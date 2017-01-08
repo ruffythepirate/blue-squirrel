@@ -5,16 +5,16 @@ import org.scalatest.mock.MockitoSugar
 import org.scalatestplus.play.PlaySpec
 import play.api.db.Databases
 import play.api.db.evolutions.Evolutions
-import util.ItTestData
+import util.{DbMigrations, ItTestData}
 
 class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with MockitoSugar with ItTestData{
 
   var cut: BlogPostRepository = _
 
-  val inMemoryDb = Databases.inMemory()
+  val inMemoryDb = DbMigrations.getMigratedDb()
 
   override def beforeAll() = {
-    Evolutions.applyEvolutions(inMemoryDb)
+
     cut = new BlogPostRepository(inMemoryDb)
   }
 
