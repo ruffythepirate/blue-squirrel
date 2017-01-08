@@ -30,8 +30,7 @@ libraryDependencies ++= Seq(
   "com.atlassian.commonmark" % "commonmark" % "0.2.0",
   "org.webjars" %% "webjars-play" % "2.4.0-1",
   "org.webjars" % "bootstrap" % "3.1.1-2",
-  "org.webjars" % "flat-ui" % "bcaf2de95e",
-  "org.webjars" % "marked" % "0.3.2"
+  "org.webjars" % "flat-ui" % "bcaf2de95e"
 )
 
 
