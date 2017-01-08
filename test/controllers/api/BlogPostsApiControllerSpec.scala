@@ -8,12 +8,12 @@ import org.scalatestplus.play.PlaySpec
 import play.api.libs.json.Json
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import posts.EditBlogPostService
+import blogposts.EditBlogPostService
 import util.TestData
 
-class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar with TestData {
+class BlogPostsApiControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar with TestData {
 
-  var cut: PostsController = _
+  var cut: BlogPostsApiController = _
 
   var postService: EditBlogPostService = _
 
@@ -22,7 +22,7 @@ class PostsControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
 
     when(postService.create(ANY_BLOGPOST_NOT_IN_DB)).thenReturn(ANY_BLOGPOST_NOT_IN_DB)
 
-    cut = new PostsController(postService)
+    cut = new BlogPostsApiController(postService)
 
   }
 

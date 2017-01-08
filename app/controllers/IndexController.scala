@@ -2,7 +2,7 @@ package controllers
 
 import com.google.inject.Inject
 import play.api.mvc.{Action, Controller}
-import posts.EditBlogPostService
+import blogposts.EditBlogPostService
 import repositories.BlogPostRepository
 
 class IndexController @Inject() (blogPostRepository: BlogPostRepository) extends Controller {

@@ -9,9 +9,9 @@ import play.api.test.FakeRequest
 import play.api.test.Helpers._
 
 
-class PostControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar{
+class BlogPostApiControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar{
 
-    var cut : PostController = _
+    var cut : BlogPostApiController = _
 
   var markdownService: MarkdownService = _
 
@@ -23,7 +23,7 @@ class PostControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar{
 
     when(markdownService.renderText(INPUT)).thenReturn(PARSED_MARKDOWN)
 
-    cut = new PostController(markdownService)
+    cut = new BlogPostApiController(markdownService)
   }
 
   "PostController.parseMarkdown" should {

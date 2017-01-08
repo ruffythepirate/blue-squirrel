@@ -1,4 +1,4 @@
-package posts
+package blogposts
 
 import models.BlogPost
 

@@ -1,4 +1,4 @@
-package posts
+package blogposts
 
 import markdown.MarkdownService
 import org.scalatest.{BeforeAndAfter, FunSuite}

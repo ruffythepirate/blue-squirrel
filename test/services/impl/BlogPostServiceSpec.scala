@@ -5,7 +5,7 @@ import org.mockito.Mockito._
 import org.scalatest.BeforeAndAfter
 import org.scalatest.mock.MockitoSugar
 import org.scalatestplus.play.PlaySpec
-import posts.impl.EditBlogPostService
+import blogposts.impl.EditBlogPostService
 import repositories.BlogPostRepository
 import util.TestData
 

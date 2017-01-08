@@ -4,9 +4,9 @@ import com.google.inject.Inject
 import models.BlogPost
 import play.api.libs.json.{JsValue, Json}
 import play.api.mvc.{Action, Controller}
-import posts.EditBlogPostService
+import blogposts.EditBlogPostService
 
-class PostsController @Inject() (blogPostService: EditBlogPostService) extends Controller {
+class BlogPostsApiController @Inject()(blogPostService: EditBlogPostService) extends Controller {
 
   def post = Action {
     request =>

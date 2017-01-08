@@ -1,4 +1,4 @@
-package posts
+package blogposts
 
 import com.google.inject.Inject
 import markdown.MarkdownService
