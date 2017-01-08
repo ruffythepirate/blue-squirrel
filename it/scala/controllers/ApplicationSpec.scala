@@ -8,6 +8,7 @@
 //import play.api.inject.guice.GuiceApplicationBuilder
 //import play.api.test.Helpers._
 //import play.api.test._
+//import util.DbMigrations
 //
 //
 ///**
@@ -18,18 +19,14 @@
 //class ApplicationSpec extends PlaySpec with OneAppPerSuite with BeforeAndAfterAll {
 //
 //  // This is actually not necessary. Evolutions are done automatic when One App is generated.
-//  val inMemoryDb = Databases.inMemory()
+//  val inMemoryDb = DbMigrations.getMigratedDb()
 //
 //  lazy override val app = new GuiceApplicationBuilder()
 //      .overrides(bind[Database].toInstance(inMemoryDb))
 //      .build()
 //
-//  override def beforeAll() = {
-//    Evolutions.applyEvolutions(inMemoryDb)
-//  }
-//
 //  override def afterAll() = {
-//    Evolutions.cleanupEvolutions(inMemoryDb)
+//    DbMigrations.cleanUpDb()
 //  }
 //
 //  "BlogPostController.index"  when {

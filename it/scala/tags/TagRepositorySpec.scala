@@ -1,25 +1,24 @@
 package tags
 
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.mock.MockitoSugar
-import org.scalatest.{BeforeAndAfterAll, FunSuite}
-import org.scalatestplus.play.PlaySpec
-import play.api.db.Databases
-import play.api.db.evolutions.Evolutions
-import repositories.impl.BlogPostRepository
+import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
+import play.api.db.Database
 import util.{DbMigrations, ItTestData}
 
-class TagRepositorySpec extends PlaySpec with BeforeAndAfterAll with MockitoSugar with ItTestData {
+class TagRepositorySpec extends PlaySpec with OneAppPerSuite with BeforeAndAfterAll with MockitoSugar with ItTestData {
 
   var cut: TagRepository = _
 
-  val inMemoryDb = DbMigrations.getMigratedDb()
+  var inMemoryDb: Database = _
 
   override def beforeAll() = {
+    inMemoryDb = DbMigrations.getMigratedDb()
     cut = new TagRepository(inMemoryDb)
   }
 
   override def afterAll() = {
-//    Evolutions.cleanupEvolutions(inMemoryDb)
+    DbMigrations.cleanUpDb()
   }
 
   "TagRepository.findByName" should {
