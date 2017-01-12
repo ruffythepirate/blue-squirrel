@@ -1,5 +1,6 @@
 package blogposts
 
+import blogposts.services.ReadBlogPostService
 import markdown.MarkdownService
 import org.scalatest.{BeforeAndAfter, FunSuite}
 import org.scalatestplus.play.PlaySpec

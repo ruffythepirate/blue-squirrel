@@ -1,15 +1,16 @@
-package repositories.impl
+package blogposts.repositories
 
 import anorm.SqlParser._
 import anorm.{~, _}
+import blogposts.{BlogPost, BlogPostViewModel}
 import com.google.inject.Inject
-import models.{BlogPost, Page}
+import common.Page
 import org.joda.time.DateTime
 import play.api.Logger
 import play.api.db.Database
 
 
-class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPostRepository {
+class BlogPostRepository @Inject() ( db: Database) {
 
   // -- Parsers
 
@@ -22,7 +23,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
       get[String]("blogposts.body") ~
       get[DateTime]("blogposts.updated_date") ~
       get[DateTime]("blogposts.created_date") map {
-      case id ~ title ~ body ~ updatedDate ~ createdDate => BlogPost(Some(id), title, body, Some(updatedDate), Some(createdDate))
+      case id ~ title ~ body ~ updatedDate ~ createdDate => BlogPost(id, title, body, Some(updatedDate), Some(createdDate))
     }
   }
 
@@ -48,7 +49,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     */
   def list(page: Int = 0, pageSize: Int = 10, orderBy: Int = 1, filter: String = "%"): Page[BlogPost] = {
 
-    val offest = pageSize * page
+    val offset = pageSize * page
 
     db.withConnection { implicit connection =>
 
@@ -60,7 +61,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
           limit {pageSize} offset {offset}
         """).on(
         'pageSize -> pageSize,
-        'offset -> offest,
+        'offset -> offset,
         'filter -> filter,
         'orderBy -> orderBy).as(blogPost *)
 
@@ -71,7 +72,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
         """).on(
         'filter -> filter).as(scalar[Long].single)
 
-      Page(blogPosts, page, offest, totalRows)
+      Page(blogPosts, page, offset, totalRows)
 
     }
 
@@ -118,7 +119,7 @@ class BlogPostRepository @Inject() ( db: Database) extends repositories.BlogPost
     *
     * @param blogPost The employee values.
     */
-  def insert(blogPost: BlogPost): BlogPost = {
+  def insert(blogPost: BlogPostViewModel): BlogPost = {
     val id = db.withConnection { implicit connection =>
       SQL("""insert into blogposts (id, title, body, updated_date, created_date) values ({id}, {title}, {body}, NOW(), NOW())""")
         .on(

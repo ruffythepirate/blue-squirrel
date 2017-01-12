@@ -1,8 +1,8 @@
 package controllers
 
+import blogposts.services.ReadBlogPostService
 import com.google.inject.Inject
 import play.api.mvc.{Action, Controller}
-import blogposts.ReadBlogPostService
 
 import scala.util.{Failure, Success}
 

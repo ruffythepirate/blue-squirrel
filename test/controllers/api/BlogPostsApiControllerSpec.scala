@@ -1,6 +1,6 @@
 package controllers.api
 
-import models.BlogPost
+import blogposts.BlogPostViewModel
 import org.mockito.Mockito._
 import org.scalatest.BeforeAndAfter
 import org.scalatest.mock.MockitoSugar
@@ -8,7 +8,7 @@ import org.scalatestplus.play.PlaySpec
 import play.api.libs.json.Json
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import blogposts.EditBlogPostService
+import blogposts.services.EditBlogPostService
 import util.TestData
 
 class BlogPostsApiControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar with TestData {
@@ -20,7 +20,7 @@ class BlogPostsApiControllerSpec extends PlaySpec with BeforeAndAfter with Mocki
   before {
     postService = mock[EditBlogPostService]
 
-    when(postService.create(ANY_BLOGPOST_NOT_IN_DB)).thenReturn(ANY_BLOGPOST_NOT_IN_DB)
+    when(postService.create(ANY_BLOGPOSTVIEWMODEL_NOT_IN_DB)).thenReturn(ANY_BLOGPOSTVIEWMODEL_NOT_IN_DB)
 
     cut = new BlogPostsApiController(postService)
 
@@ -32,7 +32,7 @@ class BlogPostsApiControllerSpec extends PlaySpec with BeforeAndAfter with Mocki
         val request = createPostRequest()
         cut.post.apply(request)
 
-        verify(postService).create(ANY_BLOGPOST_NOT_IN_DB)
+        verify(postService).create(ANY_BLOGPOSTVIEWMODEL_NOT_IN_DB)
       }
 
       "call BlogPostService" in {
@@ -47,9 +47,9 @@ class BlogPostsApiControllerSpec extends PlaySpec with BeforeAndAfter with Mocki
         val request = createPostRequest()
         val response = cut.post.apply(request)
         val responseBody = contentAsJson(response)
-        val resultBlogPost = responseBody.as[BlogPost]
+        val resultBlogPost = responseBody.as[BlogPostViewModel]
 
-        assert(resultBlogPost === ANY_BLOGPOST_NOT_IN_DB)
+        assert(resultBlogPost === ANY_BLOGPOSTVIEWMODEL_NOT_IN_DB)
       }
     }
 
@@ -66,8 +66,9 @@ class BlogPostsApiControllerSpec extends PlaySpec with BeforeAndAfter with Mocki
   def createPostRequest() = {
     FakeRequest().withJsonBody(
       Json.obj(
-        "title" -> ANY_BLOGPOST_NOT_IN_DB.title,
-        "body" -> ANY_BLOGPOST_NOT_IN_DB.body
+        "title" -> ANY_BLOGPOSTVIEWMODEL_NOT_IN_DB.title,
+        "body" -> ANY_BLOGPOSTVIEWMODEL_NOT_IN_DB.body,
+        "tags" -> Seq.empty[String]
       )
     )
   }

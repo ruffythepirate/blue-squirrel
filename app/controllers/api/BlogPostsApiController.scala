@@ -1,10 +1,10 @@
 package controllers.api
 
+import blogposts.BlogPostViewModel
+import blogposts.services.EditBlogPostService
 import com.google.inject.Inject
-import models.BlogPost
 import play.api.libs.json.{JsValue, Json}
 import play.api.mvc.{Action, Controller}
-import blogposts.EditBlogPostService
 
 class BlogPostsApiController @Inject()(blogPostService: EditBlogPostService) extends Controller {
 
@@ -12,7 +12,7 @@ class BlogPostsApiController @Inject()(blogPostService: EditBlogPostService) ext
     request =>
       request.body.asJson match{
         case blogPostJson: Some[JsValue] =>
-          val blogPost = blogPostJson.get.as[BlogPost]
+          val blogPost = blogPostJson.get.as[BlogPostViewModel]
           val response = blogPostService.create(blogPost)
           Ok(Json.toJson(response))
         case None =>

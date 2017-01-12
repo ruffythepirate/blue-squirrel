@@ -1,5 +1,3 @@
-# --- First database schema
-
 # --- !Ups
 
 set ignorecase true;
