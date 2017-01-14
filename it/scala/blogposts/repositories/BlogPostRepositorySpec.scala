@@ -4,6 +4,8 @@ import org.scalatest.BeforeAndAfterAll
 import org.scalatest.mock.MockitoSugar
 import org.scalatestplus.play.PlaySpec
 import play.api.db.Database
+import tags.TagRepository
+import tags.models.Tag
 import util.{DbMigrations, ItTestData}
 
 class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with MockitoSugar with ItTestData{
@@ -12,9 +14,15 @@ class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with Mockit
 
   var inMemoryDb: Database = _
 
+  var databaseTags: Seq[Tag]= _
+
   override def beforeAll() = {
     inMemoryDb =  DbMigrations.getMigratedDb()
     cut = new BlogPostRepository(inMemoryDb)
+
+    val tagRepo = new TagRepository(inMemoryDb)
+
+    databaseTags = Seq("1", "2").map(tagRepo.getOrInsert(_))
   }
 
   override def afterAll() = {
@@ -42,6 +50,15 @@ class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with Mockit
 
       val fromDb = cut.findById(result.id).get
       assert(fromDb === result)
+    }
+
+    "save a blogpost with tags" in {
+      val result = cut.insert(ANY_BLOGPOSTVIEWMODEL_NOT_IN_DB, databaseTags.map(_.id))
+
+      val fromDb = cut.getTagIdsForBlogpost(result.id)
+
+      assert(fromDb.map(_.tagId).sorted === databaseTags.map(_.id).sorted)
+
     }
 
     "return a blogpost with an id" in {

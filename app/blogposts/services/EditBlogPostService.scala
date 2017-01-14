@@ -10,8 +10,7 @@ class EditBlogPostService @Inject()(repository: BlogPostRepository, tagService: 
 
     val tagIds = tagService.getOrCreateTagIds(post.tags)
 
-    val result = repository.insert(post)
-
+    val result = repository.insert(post, tagIds)
 
     BlogPostViewModel(result)
   }

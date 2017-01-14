@@ -7,7 +7,7 @@ CREATE TABLE blogposts_tags (
   blogposts_id BIGINT NOT NULL,
   FOREIGN KEY(tags_id) REFERENCES tags(id),
   FOREIGN KEY(blogposts_id) REFERENCES blogposts(id),
-  UNIQUE(tags_id, blogposts_id)
+  PRIMARY KEY(tags_id, blogposts_id)
 );
 
 # --- !Downs

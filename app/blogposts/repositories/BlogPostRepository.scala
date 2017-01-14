@@ -2,7 +2,7 @@ package blogposts.repositories
 
 import anorm.SqlParser._
 import anorm.{~, _}
-import blogposts.{BlogPost, BlogPostViewModel}
+import blogposts.{BlogPost, BlogPostTag, BlogPostViewModel}
 import com.google.inject.Inject
 import common.Page
 import org.joda.time.DateTime
@@ -24,6 +24,13 @@ class BlogPostRepository @Inject() ( db: Database) {
       get[DateTime]("blogposts.updated_date") ~
       get[DateTime]("blogposts.created_date") map {
       case id ~ title ~ body ~ updatedDate ~ createdDate => BlogPost(id, title, body, Some(updatedDate), Some(createdDate))
+    }
+  }
+
+  val blogPostTags = {
+    get[Long]("blogposts_tags.blogposts_id") ~
+    get [Long] ("blogposts_tags.tags_id") map {
+      case blogposts_id ~ tags_id => BlogPostTag(blogposts_id, tags_id)
     }
   }
 
@@ -119,17 +126,40 @@ class BlogPostRepository @Inject() ( db: Database) {
     *
     * @param blogPost The employee values.
     */
-  def insert(blogPost: BlogPostViewModel): BlogPost = {
-    val id = db.withConnection { implicit connection =>
-      SQL("""insert into blogposts (id, title, body, updated_date, created_date) values ({id}, {title}, {body}, NOW(), NOW())""")
+  def insert(blogPost: BlogPostViewModel, tagIds: Seq[Long] = Seq.empty): BlogPost = {
+    val id = db.withTransaction { implicit connection =>
+      val insertedId: Option[Long] = SQL("""insert into blogposts (id, title, body, updated_date, created_date) values ({id}, {title}, {body}, NOW(), NOW())""")
         .on(
         'id -> Option.empty[Long],
         'title -> blogPost.title,
         'body -> blogPost.body )
         .executeInsert()
-    }
 
-    findById(id.get).get
+      tagIds.foreach(tagId =>
+        SQL("""insert into blogposts_tags (tags_id, blogposts_id) values ({tags_id}, {blogposts_id})""")
+          .on(
+            'tags_id -> tagId,
+            'blogposts_id -> insertedId.get)
+          .executeInsert()
+      )
+
+      insertedId.get
+    }
+    findById(id).get
+  }
+
+  def getTagIdsForBlogpost(id: Long): Seq[BlogPostTag] = {
+    val result = db.withConnection { implicit connection =>
+      try {
+        val result = SQL("""select * from blogposts_tags WHERE blogposts_id = {blogposts_id}""")
+          .on('blogposts_id -> id)
+          .as(blogPostTags *)
+        result
+      } catch {
+        case ex: Exception => Logger.info("ERROR", ex); Seq.empty
+      }
+    }
+    result
   }
 
   /**
