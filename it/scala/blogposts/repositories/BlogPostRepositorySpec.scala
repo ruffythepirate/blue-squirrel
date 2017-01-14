@@ -1,6 +1,6 @@
 package blogposts.repositories
 
-import org.scalatest.BeforeAndAfterAll
+import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll}
 import org.scalatest.mock.MockitoSugar
 import org.scalatestplus.play.PlaySpec
 import play.api.db.Database
@@ -8,7 +8,7 @@ import tags.TagRepository
 import tags.models.Tag
 import util.{DbMigrations, ItTestData}
 
-class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with MockitoSugar with ItTestData{
+class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with BeforeAndAfter with MockitoSugar with ItTestData{
 
   var cut: BlogPostRepository = _
 
@@ -20,13 +20,16 @@ class BlogPostRepositorySpec extends PlaySpec with BeforeAndAfterAll with Mockit
     inMemoryDb =  DbMigrations.getMigratedDb()
     cut = new BlogPostRepository(inMemoryDb)
 
-    val tagRepo = new TagRepository(inMemoryDb)
 
-    databaseTags = Seq("1", "2").map(tagRepo.getOrInsert(_))
   }
 
   override def afterAll() = {
     DbMigrations.cleanUpDb()
+  }
+
+  before {
+    val tagRepo = new TagRepository(inMemoryDb)
+    databaseTags = Seq("1", "2").map(tagRepo.getOrInsert(_))
   }
 
   "BlogPostRepository.update" should {
