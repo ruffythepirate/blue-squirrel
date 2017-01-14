@@ -9,6 +9,9 @@ class TagService @Inject() (tagRepository: TagRepository) {
      tagTexts
        .map(tagRepository.getOrInsert(_))
        .map(_.id)
+  }
 
+  def getAll() : Seq[TagViewModel] = {
+    tagRepository.findAll().map(TagViewModel(_))
   }
 }

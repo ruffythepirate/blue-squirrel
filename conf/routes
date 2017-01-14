@@ -15,6 +15,7 @@ POST   /api/posts               controllers.api.BlogPostsApiController.post
 
 GET    /api/post/parseMarkdown  controllers.api.BlogPostApiController.parseMarkdown(markdown: String)
 
+GET    /api/tags                 tags.controllers.TagsApiController.getAll
 
 # Map static resources from the /public folder to the /assets URL path
 GET    /assets/*file            controllers.Assets.versioned(path="/public", file: Asset)
