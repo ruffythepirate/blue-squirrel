@@ -23,6 +23,8 @@ libraryDependencies ++= Seq(jdbc,
 )
 
 
+javaOptions in Test += "-Dconfig.file=conf/application.test.conf"
+javaOptions in IntegrationTest += "-Dconfig.file=conf/application.test.conf"
 
 libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1",
