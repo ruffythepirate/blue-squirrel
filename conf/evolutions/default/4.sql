@@ -1,6 +1,6 @@
 # --- !Ups
 
-set ignorecase true;
+# --- set ignorecase true;
 
 CREATE TABLE tags (
   id                        BIGINT NOT NULL AUTO_INCREMENT,

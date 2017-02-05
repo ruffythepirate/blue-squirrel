@@ -64,7 +64,7 @@ class BlogPostRepository @Inject() ( db: Database) {
         """
           select * from blogposts
           where blogposts.title like {filter}
-          order by {orderBy} nulls last
+          order by {orderBy}
           limit {pageSize} offset {offset}
         """).on(
         'pageSize -> pageSize,

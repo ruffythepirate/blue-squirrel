@@ -18,7 +18,8 @@ sbtVersion := "0.13.11"
 libraryDependencies ++= Seq(jdbc,
   cache,
   ws,
-  evolutions
+  evolutions,
+  "mysql" % "mysql-connector-java" % "5.1.21"
 )
 
 

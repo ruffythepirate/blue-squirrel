@@ -2,7 +2,7 @@
 
 # --- !Ups
 
-set ignorecase true;
+# --- set ignorecase true;
 
 CREATE TABLE blogposts (
   id                        BIGINT NOT NULL AUTO_INCREMENT,

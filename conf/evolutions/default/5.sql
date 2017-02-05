@@ -1,6 +1,6 @@
 # --- !Ups
 
-set ignorecase true;
+# --- set ignorecase true;
 
 CREATE TABLE blogposts_tags (
   tags_id      BIGINT NOT NULL,
