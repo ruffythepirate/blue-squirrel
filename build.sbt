@@ -1,4 +1,4 @@
-import org.scoverage.coveralls.Imports.CoverallsKeys._
+// import org.scoverage.coveralls.Imports.CoverallsKeys._
 
 name := """blue-squirrel"""
 
@@ -40,11 +40,11 @@ resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 // other, legacy style, accesses its actions statically.
 routesGenerator := InjectedRoutesGenerator
 
-coverageEnabled := true
-coverageEnabled in Test := true
-coverageEnabled in IntegrationTest := true
+// coverageEnabled := true
+// coverageEnabled in Test := true
+// coverageEnabled in IntegrationTest := true
 
-coverallsToken := {
-  val token = IO.read(new File("project/coverall/coverallToken.txt"))
-  Some(token)
-}
+// coverallsToken := {
+//   val token = IO.read(new File("project/coverall/coverallToken.txt"))
+//   Some(token)
+// }

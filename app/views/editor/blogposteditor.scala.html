@@ -2,14 +2,15 @@
 @editorLayout("Blog Editor") {
 
 <div class="container" id="editor">
-        <div class="action-bar">
-            <input id="title" v-model="entry.title" class="title-field" name="title" placeholder="Title" type="text"/>
-            <span class="button-panel">
-                <button class="blogg-button button-primary" v-on:click="save">Save</button>
-                <button class="blogg-button" v-on:click="cancel">Close</button>
-            </span>
+	<div class="action-bar">
+		<input id="title" v-model="entry.title" class="title-field" name="title" placeholder="Title" type="text"/>
+		<span class="button-panel">
+			<button class="blogg-button button-primary" v-on:click="save">Save</button>
+			<button class="blogg-button" v-on:click="cancel">Close</button>
+		</span>
 
-        </div>
-    <markdown-editor v-model="entry.body"></markdown-editor>
+	</div>
+		<div><input type="text" placeholder="Tags" v-model="entry.tags"> </div>
+	<markdown-editor v-model="entry.body"></markdown-editor>
 </div>
 }
