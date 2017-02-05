@@ -3,48 +3,48 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-    <title>@title</title>
+	<head>
+		<title>@title</title>
 
-    <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/editor.css")">
-    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+		<link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
+		<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/editor.css")">
+		<link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
-    <!-- Loading Bootstrap -->
-    <!--<link href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")" rel="stylesheet">-->
+		<!-- Loading Bootstrap -->
+		<!--<link href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")" rel="stylesheet">-->
 
-    <!-- Loading Flat UI -->
-    <link href="@routes.Assets.versioned("lib/flat-ui/css/flat-ui.css")" rel="stylesheet">
+		<!-- Loading Flat UI -->
+		<link href="@routes.Assets.versioned("lib/flat-ui/css/flat-ui.css")" rel="stylesheet">
 
-    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
+		<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
 
-<!-- navigation bar -->
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <a class="navbar-brand"><i class="glyphicon glyphicon-edit"></i> @title </a>
-    </div>
-</nav>
+		<!-- navigation bar -->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<a class="navbar-brand"><i class="glyphicon glyphicon-edit"></i> @title </a>
+			</div>
+		</nav>
 
-    @content
+		@content
 
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>-->
-<!--<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.4/vue.js'></script>-->
-<!--<script type='text/javascript' src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>-->
-<script type='text/javascript' src='@routes.Assets.versioned("javascripts/lib/lodash.js")'></script>
-<script type='text/javascript' src='@routes.Assets.versioned("javascripts/lib/vue.js")'></script>
-<script type='text/javascript' src='@routes.Assets.versioned("javascripts/lib/vue-resource.js")'></script>
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.js"></script>-->
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>-->
+		<!--<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.4/vue.js'></script>-->
+		<!--<script type='text/javascript' src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>-->
+		<script type='text/javascript' src='@routes.Assets.versioned("javascripts/lib/lodash.js")'></script>
+		<script type='text/javascript' src='@routes.Assets.versioned("javascripts/lib/vue.js")'></script>
+		<script type='text/javascript' src='@routes.Assets.versioned("javascripts/lib/vue-resource.js")'></script>
 
-<script type='text/javascript' src='@routes.Assets.versioned("javascripts/app.js")'></script>
-<script type='text/javascript' src='@routes.Assets.versioned("javascripts/editor/editor.js")'></script>
-    </body>
+		<script type='text/javascript' src='@routes.Assets.versioned("javascripts/app.js")'></script>
+		<script type='text/javascript' src='@routes.Assets.versioned("javascripts/editor/editor.js")'></script>
+	</body>
 </html>
