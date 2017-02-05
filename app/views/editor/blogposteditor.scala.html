@@ -1,7 +1,7 @@
 @import controls._
 @editorLayout("Blog Editor") {
 
-<div class="container" id="editor">
+<div id="editor">
 	<div class="action-bar">
 		<input id="title" v-model="entry.title" class="title-field" name="title" placeholder="Title" type="text"/>
 		<span class="button-panel">
@@ -10,7 +10,7 @@
 		</span>
 
 	</div>
-		<div><input type="text" placeholder="Tags" v-model="entry.tags"> </div>
+		<div class="sub-bar"><input type="text" placeholder="Tags" v-model="entry.tags"> </div>
 	<markdown-editor v-model="entry.body"></markdown-editor>
 </div>
 }

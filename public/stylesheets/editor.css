@@ -6,6 +6,18 @@
     width: 100%;
 }
 
+.sub-bar {
+    background-color: #fff;
+    display: table;
+    font-size: 14px;
+    padding: 5px 30px;
+    width: 100%;
+}
+
+.sub-bar input {
+   height: 30px;
+}
+
 .blogg-button {
     border-radius: 2px;
     border: 1px solid rgba(0,0,0,0.1);
