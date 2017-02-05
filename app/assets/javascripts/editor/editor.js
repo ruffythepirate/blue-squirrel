@@ -2,7 +2,7 @@
 
 Vue.component('markdown-editor', {
 	template: '<div class="markdown-editor">'
-	+ '<textarea :value="text" @input="update" id="body" name="body"> </textarea>'
+	+ '<textarea :value="text" tabindex="2" @input="update" id="body" name="body"> </textarea>'
 	+ '<div v-html="compiledMarkdown"></div>'
 	+ '</div>',
 	props: ['value'],
