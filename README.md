@@ -4,6 +4,20 @@
 
 This is a test project for me where I try to learn some more Scala, while at the same time developing something that can be used. It is basically a blog. At a later point it might be seperated into mini services.
 
+# Setup
+
+## Backend
+
+To run the application you need to install a mysql database.
+
+1. If you are using mac, run `brew install mysql`
+2. Follow the brew instructions saying that you should run `mysql.server start`
+3. This should start the mysql server.
+4. You now need to connect using your client: use /usr/local/mysql/bin/mysql -uroot  for a newly installed mysql instance.
+5. When connected, run the command `CREATE DATABASE bluesquirrel;`
+6. We now need to create the account for this database: `CREATE USER blueadmini;`
+7. Run `GRANT ALL ON bluesquirrel.* TO blueadmin;` to give access to the database for your user.
+
 # Building Frontend
 
 This project stores it's frontend javascript files in the ui folder. It then uses gulp to compile and test these resources and then moves them into the javascript folder for the play project.
