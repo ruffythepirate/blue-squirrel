@@ -1,0 +1,12 @@
+@(socialLinks: Seq[profiles.model.SocialLink])
+
+      <ul class="social_links">
+@for(socialLink <- socialLinks) {
+        <li>
+          <a href="@{socialLink.url}" class="fa-stack fa-lg" title="@{socialLink.title}">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+          </a>
+        </li>
+}
+     </ul>

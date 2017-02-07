@@ -1,8 +1,7 @@
-@(post: blogposts.BlogPostViewModel)
+@(profile: profiles.model.Profile, post: blogposts.BlogPostViewModel)
 
-@layout("Johan's blog") {
+@layout(profile) {
 <div class="blog-post">
-    <h1>@post.title</h1>
     <div>
         @post.body
     </div>

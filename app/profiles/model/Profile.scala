@@ -6,4 +6,4 @@ case class Person(name: String, shortBiography: String)
 
 case class Position(title: String, company: String, url: String)
 
-case class SocialLink(url: String, image: String)
+case class SocialLink(url: String, image: String, title: String = "")

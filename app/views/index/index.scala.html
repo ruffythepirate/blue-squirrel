@@ -1,6 +1,6 @@
-@(blogPosts: common.Page[blogposts.BlogPostViewModel])
+@(profile: profiles.model.Profile, blogPosts: common.Page[blogposts.BlogPostViewModel])
 
-@layout("Johan's blog") {
+@layout(profile) {
     <ul class="blog-post-list">
         @for(post <- blogPosts.items) {
             @blogpostteaser(post)

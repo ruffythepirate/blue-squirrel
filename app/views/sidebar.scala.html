@@ -1,6 +1,16 @@
-@(title: String)
+@(profile: profiles.model.Profile)
     <div class="styles-header wide-styles-header">
         <div class="wide-styles-header-content">
-            <h1><a class="subtle-link" href="/">@title</a></h1>
+<div class="short_about">
+      <p>
+        <strong>@{profile.person.name}</strong>
+        <br>
+        <a href="@{profile.currentPosition.url}" target="_blank" rel="noopener noreferrer" title="My LinkedIn profile">@{profile.currentPosition.title}</a> at @{profile.currentPosition.company}
+        <br>
+      </p>
+   </div>
+@{sidebarparts.socialLinks(profile.socialLinks)}
+
         </div>
+
     </div>

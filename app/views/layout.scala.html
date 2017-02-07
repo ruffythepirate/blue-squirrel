@@ -1,10 +1,11 @@
-@(title: String)(content: Html)
+
+@(profile: profiles.model.Profile)(content: Html)
 
 <!DOCTYPE html>
 
 <html lang="en">
     <head>
-        <title>@title</title>
+        <title>A programming blog</title>
         
         <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
@@ -27,7 +28,7 @@
     </head>
     <body>
 
-    @sidebar(title)
+    @sidebar(profile)
 
     <div class="main-content-wide">
         	@content
