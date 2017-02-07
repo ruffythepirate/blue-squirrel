@@ -1,9 +1,9 @@
 @(blogPosts: common.Page[blogposts.BlogPostViewModel])
 
 @layout("Johan's blog") {
-    <div>
+    <ul class="blog-post-list">
         @for(post <- blogPosts.items) {
             @blogpostteaser(post)
         }
-    </div>
+    </ul>
 }

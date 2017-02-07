@@ -1,7 +1,5 @@
 @(post: blogposts.BlogPostViewModel)
-<div class="blog-post">
-<h1><a class="subtle-link" href="/posts/@{post.id.get}">@post.title</a></h1>
-
-<div>@post.body</div>
-
-    </div>
+<li class="blog-post-teaser">
+  <time>@{post.createdDate.get.toDate.format("yyyy-MM-dd")} </time>
+<h3><a class="subtle-link" href="/posts/@{post.id.get}">@post.title</a></h3>
+    </li>

@@ -29,6 +29,31 @@
   color: #333;
 }
 
+ul.blog-post-list {
+list-style: none;
+margin-left: 0px;
+margin-bottom: 1em;
+}
+
+ul.blog-post_list li:first-child {
+    margin: 0;
+  }
+
+ul.blog-post-list li{
+    margin: 10px 0;
+  }
+
+.blog-post-teaser h3 {
+      display: inline;
+    font-size: 1.1em;
+    font-weight: bold;
+  color: maroon;
+}
+
+.blog-post-list  time {
+margin-right: 5px;
+}
+
 .header-links {
     display: flex;
     flex: 1;
