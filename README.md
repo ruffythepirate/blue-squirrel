@@ -18,6 +18,15 @@ To run the application you need to install a mysql database.
 6. We now need to create the account for this database: `CREATE USER blueadmini;`
 7. Run `GRANT ALL ON bluesquirrel.* TO blueadmin;` to give access to the database for your user.
 
+You then need to create a private application.conf file at `conf/private/application.local.conf` that contains the following properties
+* \# db.default.driver=com.mysql.jdbc.Driver
+* \# db.default.url="jdbc:mysql://localhost/bluesquirrel"
+* \# db.default.username=blueadmin
+* \# db.default.password="the strong password"
+
+where username and password are equal to what you have configured for your database.
+
+
 # Building Frontend
 
 This project stores it's frontend javascript files in the ui folder. It then uses gulp to compile and test these resources and then moves them into the javascript folder for the play project.

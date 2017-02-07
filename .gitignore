@@ -1,6 +1,7 @@
 # Ignore Play! working directory #
 .ensime
 .ensime_cache
+conf/private
 bin/
 /db
 .eclipse

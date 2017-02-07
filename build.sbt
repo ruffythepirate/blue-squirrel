@@ -26,6 +26,8 @@ libraryDependencies ++= Seq(jdbc,
 javaOptions in Test += "-Dconfig.file=conf/application.test.conf"
 javaOptions in IntegrationTest += "-Dconfig.file=conf/application.test.conf"
 
+javaOptions in Runtime += "-Dconfig.file=conf/private/application.local.conf"
+
 libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1",
   "org.mockito" % "mockito-core" % "2.2.22",
