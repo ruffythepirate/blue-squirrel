@@ -6,20 +6,20 @@
 <html lang="en">
     <head>
         <title>A programming blog</title>
-        
+
         <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/editor.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
-        
+
         <!-- Loading Bootstrap -->
 	    <!--<link href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")" rel="stylesheet">-->
-	
+
 	    <!-- Loading Flat UI -->
 	    <!--<link href="@routes.Assets.versioned("lib/flat-ui/css/flat-ui.css")" rel="stylesheet">-->
 
         <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
-	
+
 	    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
 	    <!--[if lt IE 9]>
 	      	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -33,7 +33,7 @@
     <div class="main-content-wide">
         	@content
         </div>
-        
+
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
         <script type='text/javascript' src='@routes.Assets.versioned("javascripts/flat-ui.min.js")'></script>
