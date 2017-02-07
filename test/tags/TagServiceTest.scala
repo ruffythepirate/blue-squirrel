@@ -37,6 +37,26 @@ class TagServiceTest extends PlaySpec with BeforeAndAfter with MockitoSugar{
       val result = cut.getOrCreateTagIds(TEST_TAGS.map(_.name))
 
       assert( result === TEST_TAGS.map(_.id))
+
+      TEST_TAGS
+        .map(_.name)
+        .foreach(a => verify(tagRepositoryMock).getOrInsert(a))
+    }
+
+    "filter away empty tags" in {
+     val result = cut.getOrCreateTagIds(Seq(""))
+
+     assert(result === Seq.empty[String])
+    }
+
+    "filters away duplicated" in {
+      when(tagRepositoryMock.getOrInsert("dup"))
+        .thenReturn(Tag(3l, "dup", DateTime.now))
+
+      val result = cut.getOrCreateTagIds(Seq("dup", "dup"))
+
+      verify(tagRepositoryMock, times(1)).getOrInsert("dup")
+      assert(result.size === 1)
     }
   }
 
