@@ -31,3 +31,5 @@ target
 /ui/build-test
 /app/assets/javascripts/lib
 /project/coverall
+tags
+.tags
