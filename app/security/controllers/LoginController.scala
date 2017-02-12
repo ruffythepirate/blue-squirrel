@@ -2,10 +2,10 @@ package security.controllers
 
 import play.api.mvc.{Action, Controller}
 import com.google.inject.Inject
-import security.AuthService
+import security.{AuthService, AuthSessionService}
 import scala.util.{Success, Failure}
 
-class LoginController @Inject() (authService: AuthService) extends Controller {
+class LoginController @Inject() (authService: AuthService, authSessionService: AuthSessionService) extends Controller {
   def index = Action {
     Ok(views.html.user.login.login())
   }
@@ -15,7 +15,9 @@ class LoginController @Inject() (authService: AuthService) extends Controller {
 
     response match {
       case Success(user) =>
+
         Ok("")
+          .withSession(authSessionService.getSessionWithUser(request.session, user))
       case Failure(exc) =>
         BadRequest("")
     }

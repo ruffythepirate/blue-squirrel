@@ -13,8 +13,9 @@ import security.model.{MissingCredentialsException,InvalidCredentialsException}
 import security.model.User
 import org.mockito.Mockito._
 import org.mockito.ArgumentMatchers._
+import util.TestData
 
-class DefaultAuthServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSugar{
+class DefaultAuthServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSugar with TestData{
 
   var cut: DefaultAuthService = _
 
@@ -36,7 +37,7 @@ class DefaultAuthServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSu
 
         val response = cut.verifyCredentials(request)
 
-        assert(response === Success(User("admin")))
+        assert(response === Success(User(1l, "admin")))
     }
 
     "reject missing password" in {

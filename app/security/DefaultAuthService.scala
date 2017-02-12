@@ -44,7 +44,7 @@ class DefaultAuthService @Inject()(conf: Configuration) extends AuthService {
   private def getUser(username: String, password: String) = {
     if(correctPassword != None && username != None) {
       if(username == correctUsername.get && password == correctPassword.get)
-        Success(User(username, false))
+        Success(User(1l, username, false))
       else
         Failure(InvalidCredentialsException())
     }
