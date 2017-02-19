@@ -36,6 +36,7 @@ class LoginControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
       val response = cut.login.apply(request)
 
       assert(status(response) === OK)
+      assert(header("set-cookie", response) !== None)
     }
 
     "return BadRequest without cookie on wrong credentials" in{
@@ -44,6 +45,7 @@ class LoginControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
 
       val response = cut.login.apply(request)
       assert(status(response) === BAD_REQUEST)
+      assert(header("set-cookie", response) !== None)
     }
   }
 }
