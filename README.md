@@ -26,6 +26,13 @@ You then need to create a private application.conf file at `conf/private/applica
 
 where username and password are equal to what you have configured for your database.
 
+### Authentication
+
+To be able to login you must setup the default username and password. This should also be done in your private configuration file.
+
+In your `conf/private/application.local.conf`
+* `auth.simple.username=<your username>`
+* `auth.simple.password=<your password>`
 
 # Building Frontend
 
@@ -46,6 +53,4 @@ To run some of the unit tests, selenium is required. You are required to install
 
 It might be that your chromedriver isn't compatible with your chrome version. In that case you can manually find a chrome driver here: https://sites.google.com/a/chromium.org/chromedriver/.
 When you are manually downloading a chromedriver you must ensure that it is available in the path.
-
-
 
