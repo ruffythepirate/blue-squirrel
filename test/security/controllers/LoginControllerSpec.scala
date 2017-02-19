@@ -45,7 +45,7 @@ class LoginControllerSpec extends PlaySpec with BeforeAndAfter with MockitoSugar
 
       val response = cut.login.apply(request)
       assert(status(response) === BAD_REQUEST)
-      assert(header("set-cookie", response) !== None)
+      assert(header("set-cookie", response) === None)
     }
   }
 }
