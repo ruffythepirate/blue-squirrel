@@ -7,12 +7,14 @@ import org.mockito.ArgumentMatchers._
 import play.api.inject.ConstructionTarget
 import play.api.{Configuration, Environment}
 import play.api.test.FakeRequest
+
 import scala.util.Success
 import scala.util.Failure
-import security.model.{MissingCredentialsException,InvalidCredentialsException}
+import security.model.{InvalidCredentialsException, MissingCredentialsException}
 import security.model.User
 import org.mockito.Mockito._
 import org.mockito.ArgumentMatchers._
+import play.api.libs.json.{JsObject, Json}
 import util.TestData
 
 class DefaultAuthServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSugar with TestData{
@@ -32,8 +34,8 @@ class DefaultAuthServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSu
   "DefaultAuthService.verifyCredentials" should {
     "accept correct credentials" in {
       val request = FakeRequest()
-        .withFormUrlEncodedBody(("username", "admin"),
-          ("password", "correct"))
+        .withJsonBody(Json.obj("username" -> "admin",
+          "password" -> "correct"))
 
         val response = cut.verifyCredentials(request)
 
@@ -42,7 +44,7 @@ class DefaultAuthServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSu
 
     "reject missing password" in {
       val request = FakeRequest()
-        .withFormUrlEncodedBody(("username", "admin"))
+        .withJsonBody(Json.obj("username" -> "admin"))
 
         val response = cut.verifyCredentials(request)
 
@@ -51,7 +53,7 @@ class DefaultAuthServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSu
 
     "reject missing username" in {
       val request = FakeRequest()
-        .withFormUrlEncodedBody(("password", "admin"))
+        .withJsonBody(Json.obj("password" -> "admin"))
 
         val response = cut.verifyCredentials(request)
 
@@ -60,8 +62,8 @@ class DefaultAuthServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSu
 
     "reject faulty username" in {
       val request = FakeRequest()
-        .withFormUrlEncodedBody(("username", "wrong"),
-          ("password", "correct"))
+        .withJsonBody(Json.obj("username" -> "wrong",
+          "password" -> "correct"))
 
         val response = cut.verifyCredentials(request)
 
@@ -71,13 +73,12 @@ class DefaultAuthServiceSpec extends PlaySpec with BeforeAndAfter with MockitoSu
 
     "reject faulty password" in {
       val request = FakeRequest()
-        .withFormUrlEncodedBody(("username", "admin"),
-          ("password", "wrong"))
+        .withJsonBody(Json.obj("username" -> "admin",
+          "password" -> "wrong"))
 
         val response = cut.verifyCredentials(request)
 
         assert(response === Failure(InvalidCredentialsException()))
     }
   }
-
 }

@@ -9,6 +9,10 @@ button.addEventListener('click', function() {
   const data = prepareRequest();
 
   const request = {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
     method: 'POST',
     body: data
   }
@@ -37,9 +41,12 @@ function prepareRequest() {
   const username = document.querySelector('input[name="username"]').value;
   const password = document.querySelector('input[name="password"]').value;
 
-  const data = new FormData();
-
-  data.append('username', username);
-  data.append('password', password);
-  return data;
+  return JSON.stringify({
+    username: username,
+    password: password
+  });
+//  const data = new FormData();
+//  data.append('username', username);
+//  data.append('password', password);
+//  return data;
 }

@@ -7,7 +7,9 @@ import scala.util.Success
 import security.model.User
 import play.api.Configuration
 import com.google.inject.Inject
-import security.model.{MissingCredentialsException,InvalidCredentialsException}
+import play.api.libs.json.{JsObject, JsString, JsValue}
+import security.model.{InvalidCredentialsException, MissingCredentialsException}
+
 import scala.util.Failure
 import play.mvc.Http._
 
@@ -29,12 +31,11 @@ class DefaultAuthService @Inject()(conf: Configuration) extends AuthService {
     getCredentialParameter(request, "username")
 
   private def getCredentialParameter(request: Request[AnyContent], name:String) = {
-    val parameters = request.body.asFormUrlEncoded.getOrElse(Map.empty[String,Seq[String]])
-      .map { case (k,v) => k -> v.mkString }
+    val parameters = request.body.asJson.getOrElse(JsObject(Seq()))
 
-      parameters.get(name) match {
-        case Some(value) => Success(value)
-        case None => Failure(MissingCredentialsException())
+      parameters.\(name).toOption match {
+        case Some(JsString(value)) => Success(value)
+        case _ => Failure(MissingCredentialsException())
       }
   }
 
