@@ -8,6 +8,8 @@ This is a test project for me where I try to learn some more Scala, while at the
 
 ## Backend
 
+### Mac
+
 To run the application you need to install a mysql database.
 
 1. If you are using mac, run `brew install mysql`
@@ -19,12 +21,25 @@ To run the application you need to install a mysql database.
 7. Run `GRANT ALL ON bluesquirrel.* TO blueadmin;` to give access to the database for your user.
 
 You then need to create a private application.conf file at `conf/private/application.local.conf` that contains the following properties
+
 * \# db.default.driver=com.mysql.jdbc.Driver
 * \# db.default.url="jdbc:mysql://localhost/bluesquirrel"
 * \# db.default.username=blueadmin
 * \# db.default.password="the strong password"
 
+make sure that you include the default config file by writing `include "../application.conf"` in the beginning of the file.
+
 where username and password are equal to what you have configured for your database.
+
+### Fedora Linux
+
+For fedora linux it is preferred to install and use mariaDB.
+
+1. Follow the instructions here to install and setup mariadb: https://fedoraproject.org/wiki/MariaDB
+2. Use the instructions in the link above also to create the bluesquirrel database, and the new user.
+
+Follow the instructions on creating a local conf uond in the Mac section.
+
 
 ### Authentication
 
