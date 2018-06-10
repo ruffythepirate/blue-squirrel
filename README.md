@@ -17,7 +17,7 @@ To run the application you need to install a mysql database.
 3. This should start the mysql server.
 4. You now need to connect using your client: use /usr/local/mysql/bin/mysql -uroot  for a newly installed mysql instance.
 5. When connected, run the command `CREATE DATABASE bluesquirrel;`
-6. We now need to create the account for this database: `CREATE USER blueadmini;`
+6. We now need to create the account for this database: `CREATE USER blueadmin;`
 7. Run `GRANT ALL ON bluesquirrel.* TO blueadmin;` to give access to the database for your user.
 
 You then need to create a private application.conf file at `conf/private/application.local.conf` that contains the following properties
